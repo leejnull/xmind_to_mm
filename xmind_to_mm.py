@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import os
 import sys
 from typing import List
 from xmindparser import xmind_to_dict
@@ -65,7 +66,8 @@ def main():
         res = recursionRead(d['topic'])
     else:
         res = recursionRead(d)
-    write_path = '{0}.mm'.format('.'.join(path.split('.')[:-1]))
+    basename = os.path.basename(path)
+    write_path = '{0}.mm'.format('.'.join(basename.split('.')[:-1]))
     with open(write_path, 'w') as f:
         f.write('<?xml version="1.0" ?>')
         f.write('<map version="0.8.1">')
